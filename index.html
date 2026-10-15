@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WhatsApp Groups Hub</title>
+<meta name="theme-color" content="#075e54">
+<meta name="description" content="Find and share WhatsApp groups by topic.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="splash" role="status" aria-label="Loading WhatsApp Groups Hub">
+  <svg class="logo" viewBox="0 0 96 96" aria-hidden="true"><path d="M48 8C26 8 8 25 8 46c0 8 3 16 8 22l-4 18 19-5c7 4 14 6 21 6 22 0 40-17 40-38S70 8 48 8z" fill="#25d366"/><circle cx="32" cy="46" r="5" fill="#fff"/><circle cx="48" cy="46" r="5" fill="#fff"/><circle cx="64" cy="46" r="5" fill="#fff"/></svg>
+  <h1>WhatsApp Groups Hub</h1>
+  <p>Find your people, one group at a time</p>
+  <div class="bar"><i></i></div>
+</div>
+
+<header class="top">
+  <a class="brand" href="#home">WhatsApp Groups Hub</a>
+  <button id="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu">&#9776;</button>
+  <nav id="nav" aria-label="Main">
+    <a href="#home">Home</a>
+    <a href="#search">Search Groups</a>
+    <a href="#add">Add Group</a>
+    <a href="#profile">Profile</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact / Report Group</a>
+  </nav>
+</header>
+
+<main>
+  <section data-view="home">
+    <div class="search"><input id="q" type="search" placeholder="Search by name, category or topic" aria-label="Search groups" autocomplete="off"></div>
+    <p id="count" class="muted" aria-live="polite"></p>
+    <div id="state"></div>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <section data-view="add" hidden>
+    <h2>Add your group</h2>
+    <p id="addNote" class="muted">New groups are reviewed before they appear. Only approved groups are public.</p>
+    <form id="addForm" novalidate>
+      <label>Your name<input name="submitterName" required maxlength="60"></label>
+      <label>Username<input name="submitterUsername" required pattern="[A-Za-z0-9_]{3,20}" maxlength="20"></label>
+      <label>Group name<input name="name" required maxlength="80"></label>
+      <label>Category<select name="category" required></select></label>
+      <label>Group description<textarea name="description" required maxlength="300" rows="3"></textarea></label>
+      <label>WhatsApp invite link<input name="inviteLink" required type="url" placeholder="https://chat.whatsapp.com/..."></label>
+      <label class="check"><input type="checkbox" name="admin" required> I am an admin of this WhatsApp group and I am authorized to share its invite link.</label>
+      <button class="btn" id="addBtn" type="submit">Submit group</button>
+      <p id="addMsg" class="msg" role="alert"></p>
+    </form>
+  </section>
+
+  <section data-view="profile" hidden>
+    <h2>Your profile</h2>
+    <p class="muted">No password needed. Your profile is tied to this browser.</p>
+    <form id="profForm" novalidate>
+      <label>Name<input name="name" required maxlength="60"></label>
+      <label>Username<input name="username" required pattern="[A-Za-z0-9_]{3,20}" maxlength="20"></label>
+      <button class="btn" type="submit">Save profile</button>
+      <p id="profMsg" class="msg" role="alert"></p>
+    </form>
+  </section>
+
+  <section data-view="about" hidden>
+    <h2>About</h2>
+    <p>WhatsApp Groups Hub is a directory of WhatsApp groups shared by their admins. Every group is reviewed before it is listed.</p>
+    <p>Opening an invite link takes you to WhatsApp, where you decide whether to join. This site is independent and is not affiliated with or endorsed by WhatsApp or Meta.</p>
+  </section>
+
+  <section data-view="contact" hidden>
+    <h2>Contact / Report group</h2>
+    <p class="muted">Report a group that is spam, unsafe, broken or not friendly. We review every report.</p>
+    <form id="repForm" novalidate>
+      <label>Group<select name="groupId" required></select></label>
+      <label>What is wrong?<textarea name="reason" required minlength="10" maxlength="500" rows="4"></textarea></label>
+      <button class="btn" type="submit">Send report</button>
+      <p id="repMsg" class="msg" role="alert"></p>
+    </form>
+  </section>
+</main>
+
+<footer>&copy; WhatsApp Groups Hub &middot; <a href="privacy.html">Privacy Policy</a></footer>
+
+<dialog id="joinDlg" aria-labelledby="joinTitle">
+  <h3 id="joinTitle"></h3>
+  <p>You will be taken to WhatsApp. We record that you opened this group's invite link.</p>
+  <p id="joinMsg" class="msg" role="alert"></p>
+  <div class="row"><button class="btn ghost" id="joinNo">Cancel</button><button class="btn" id="joinYes">Join</button></div>
+</dialog>
+
+<dialog id="welcomeDlg" aria-labelledby="wTitle">
+  <h3 id="wTitle">Welcome! Pick a name</h3>
+  <p class="muted">Tell us who you are. No password or email needed.</p>
+  <form id="welcomeForm" novalidate>
+    <label>Name<input name="name" required maxlength="60"></label>
+    <label>Username<input name="username" required pattern="[A-Za-z0-9_]{3,20}" maxlength="20"></label>
+    <p id="welMsg" class="msg" role="alert"></p>
+    <div class="row"><button class="btn ghost" type="button" id="welLater">Not now</button><button class="btn" type="submit">Continue</button></div>
+  </form>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>
