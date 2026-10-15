@@ -1,7 +1,7 @@
 'use strict';
 
 const API_BASE = 'https://backend-production-19c2f.up.railway.app';
-const API = API_BASE + '/api/hub';
+const API = API_BASE + '/api';
 const CATS = ['Education','Technology','Programming','Jobs','Business','Languages','Gaming','Entertainment'];
 const HUES = [200,260,150,30,340,170,0,290];
 const $ = s => document.querySelector(s);
