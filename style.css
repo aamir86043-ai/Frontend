@@ -65,3 +65,8 @@ footer{text-align:center;padding:20px;color:var(--mu);font-size:.9rem}
 }
 @media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition:none!important}}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:thin}
+.chip{flex:none;border:2px solid var(--line);background:#fff;color:var(--dk);border-radius:999px;padding:6px 16px;font:600 .9rem inherit;cursor:pointer;min-height:40px}
+.chip.on{background:var(--dk);border-color:var(--dk);color:#fff}
+#more{margin:20px auto 0;display:block}
+input[readonly]{background:#eef4f1;color:var(--mu)}
