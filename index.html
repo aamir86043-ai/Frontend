@@ -33,20 +33,22 @@
 <main>
   <section data-view="home">
     <div class="search"><input id="q" type="search" placeholder="Search by name, category or topic" aria-label="Search groups" autocomplete="off"></div>
+    <div id="chips" class="chips" aria-label="Categories"></div>
     <p id="count" class="muted" aria-live="polite"></p>
     <div id="state"></div>
     <div id="grid" class="grid"></div>
+    <button id="more" class="btn ghost" type="button" hidden>Show more groups</button>
   </section>
 
   <section data-view="add" hidden>
     <h2>Add your group</h2>
     <p id="addNote" class="muted">New groups are reviewed before they appear. Only approved groups are public.</p>
     <form id="addForm" novalidate>
-      <label>Your name<input name="submitterName" required maxlength="60"></label>
-      <label>Username<input name="submitterUsername" required pattern="[A-Za-z0-9_]{3,20}" maxlength="20"></label>
+      <label>Your name<input name="submitterName" readonly placeholder="Set on the Profile page"></label>
+      <label>Username<input name="submitterUsername" readonly placeholder="Set on the Profile page"></label>
       <label>Group name<input name="name" required maxlength="80"></label>
       <label>Category<select name="category" required></select></label>
-      <label>Group description<textarea name="description" required maxlength="300" rows="3"></textarea></label>
+      <label>Group description<textarea name="description" required maxlength="500" rows="3"></textarea></label>
       <label>WhatsApp invite link<input name="inviteLink" required type="url" placeholder="https://chat.whatsapp.com/..."></label>
       <label class="check"><input type="checkbox" name="admin" required> I am an admin of this WhatsApp group and I am authorized to share its invite link.</label>
       <button class="btn" id="addBtn" type="submit">Submit group</button>
@@ -59,7 +61,7 @@
     <p class="muted">No password needed. Your profile is tied to this browser.</p>
     <form id="profForm" novalidate>
       <label>Name<input name="name" required maxlength="60"></label>
-      <label>Username<input name="username" required pattern="[A-Za-z0-9_]{3,20}" maxlength="20"></label>
+      <label>Username<input name="username" required pattern="[A-Za-z0-9_]{3,24}" maxlength="24"></label>
       <button class="btn" type="submit">Save profile</button>
       <p id="profMsg" class="msg" role="alert"></p>
     </form>
@@ -76,7 +78,7 @@
     <p class="muted">Report a group that is spam, unsafe, broken or not friendly. We review every report.</p>
     <form id="repForm" novalidate>
       <label>Group<select name="groupId" required></select></label>
-      <label>What is wrong?<textarea name="reason" required minlength="10" maxlength="500" rows="4"></textarea></label>
+      <label>What is wrong?<textarea name="reason" required minlength="10" maxlength="300" rows="4"></textarea></label>
       <button class="btn" type="submit">Send report</button>
       <p id="repMsg" class="msg" role="alert"></p>
     </form>
@@ -97,7 +99,7 @@
   <p class="muted">Tell us who you are. No password or email needed.</p>
   <form id="welcomeForm" novalidate>
     <label>Name<input name="name" required maxlength="60"></label>
-    <label>Username<input name="username" required pattern="[A-Za-z0-9_]{3,20}" maxlength="20"></label>
+    <label>Username<input name="username" required pattern="[A-Za-z0-9_]{3,24}" maxlength="24"></label>
     <p id="welMsg" class="msg" role="alert"></p>
     <div class="row"><button class="btn ghost" type="button" id="welLater">Not now</button><button class="btn" type="submit">Continue</button></div>
   </form>
